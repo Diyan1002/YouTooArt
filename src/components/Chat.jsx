@@ -7,7 +7,7 @@ import { FaEllipsisV, FaArrowLeft } from "react-icons/fa";
 
 // Import images for each message
 import ranveerImg from "../assets/ranveer.png";
-import aliImg from "../assets/ali.png";
+import aliImg from "../assets/Ali.png";
 import emersonImg from "../assets/emerson.png";
 import nolanImg from "../assets/nolan.png";
 import witsonImg from "../assets/witson.png";
