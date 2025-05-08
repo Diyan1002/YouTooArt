@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import loginImage from "../assets/banner.png";
 import logo from "../assets/logo.png";
-import successImage from "../assets/created.PNG";
+import successImage from "../assets/created.png";
 import CreateProfileModal from "./CreateProfileModal";
 
 const OtpVerification = () => {
