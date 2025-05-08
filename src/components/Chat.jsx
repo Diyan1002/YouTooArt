@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Bell } from "lucide-react";
 import searchImg from "../assets/search.png";
-import hbImg from "../assets/Elli.PNG";
+// import hbImg from "../assets/Elli.PNG";
 import Editt from "../assets/edit.png";
 import { FaEllipsisV, FaArrowLeft } from "react-icons/fa";
 
