@@ -132,7 +132,7 @@ const Sidebar = ({ onNavigate }) => {
       )}
 
      {/* Logout button */}
-<div className="mt-auto">
+<div className={`mt-auto lg:mb-0 mb-8`}>
   <button
     onClick={() => navigate("/login")}
     className="flex items-center ml-1 w-full py-2 bg-orange-50 text-[#FF4E4E] hover:bg-orange-100 transition"
