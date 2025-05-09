@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 import logoutIcon from "../assets/logout.png";
@@ -22,7 +21,7 @@ import privacyIcon from "../assets/privacyy.png";
 
 const Sidebar = ({ onNavigate }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeItem, setActiveItem] = useState(""); // State to track active item
+  const [activeItem, setActiveItem] = useState("");
   const navigate = useNavigate();
 
   const navItems = [
@@ -42,16 +41,30 @@ const Sidebar = ({ onNavigate }) => {
     { name: "Terms & Conditions", icon: termsIcon, path: "Terms" },
     { name: "Privacy Policy", icon: privacyIcon, path: "Privacy" },
   ];
-  
 
   const handleNavigate = (path, name) => {
-    setActiveItem(name); // Set the active item
-    onNavigate(path); // Call the navigation function
+    setActiveItem(name);
+    onNavigate(path);
   };
 
   return (
-<aside className="w-60 h-screen bg-white p-4 flex flex-col">
-{/* Logo */}
+    <aside
+      className="w-60 h-screen bg-white p-4 flex flex-col overflow-y-auto"
+      style={{
+        scrollbarWidth: "none", // For Firefox
+        msOverflowStyle: "none", // For IE and Edge
+      }}
+    >
+      {/* Hide scrollbar for Webkit browsers */}
+      <style>
+        {`
+          aside::-webkit-scrollbar {
+            display: none;
+          }
+        `}
+      </style>
+
+      {/* Logo */}
       <div className="mb-6">
         <img
           src={logoImage}
@@ -108,39 +121,38 @@ const Sidebar = ({ onNavigate }) => {
           className="-mt-16 space-y-2 text-sm ml-2"
         >
           {accountItems.map((item) => (
-  <div
-    key={item.name}
-    className="flex items-center hover:text-gray-600 cursor-pointer py-1"
-    onClick={() => handleNavigate(item.path, item.name)}
-  >
-    <img
-      src={item.icon}
-      alt={`${item.name} icon`}
-      className="w-5 h-5 mr-3 object-contain"
-      style={{
-        filter:
-          activeItem === item.name
-            ? "invert(29%) sepia(98%) saturate(748%) hue-rotate(190deg) brightness(92%) contrast(92%)"
-            : "none",
-      }}
-    />
-    <span>{item.name}</span>
-  </div>
-))}
-
+            <div
+              key={item.name}
+              className="flex items-center hover:text-gray-600 cursor-pointer py-1"
+              onClick={() => handleNavigate(item.path, item.name)}
+            >
+              <img
+                src={item.icon}
+                alt={`${item.name} icon`}
+                className="w-5 h-5 mr-3 object-contain"
+                style={{
+                  filter:
+                    activeItem === item.name
+                      ? "invert(29%) sepia(98%) saturate(748%) hue-rotate(190deg) brightness(92%) contrast(92%)"
+                      : "none",
+                }}
+              />
+              <span>{item.name}</span>
+            </div>
+          ))}
         </div>
       )}
 
-     {/* Logout button */}
-<div className="mt-auto">
-  <button
-    onClick={() => navigate("/login")}
-    className="flex items-center ml-1 w-full py-2 bg-orange-50 text-[#FF4E4E] hover:bg-orange-100 transition"
-  >
-    <img src={logoutIcon} alt="Logout" className="h-6 w-6 mr-3" />
-    Logout
-  </button>
-</div>
+      {/* Logout button */}
+      <div className="mt-auto">
+        <button
+          onClick={() => navigate("/login")}
+          className="flex items-center ml-1 w-full py-2 bg-orange-50 text-[#FF4E4E] hover:bg-orange-100 transition"
+        >
+          <img src={logoutIcon} alt="Logout" className="h-6 w-6 mr-3" />
+          Logout
+        </button>
+      </div>
     </aside>
   );
 };
