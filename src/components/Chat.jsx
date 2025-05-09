@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Bell } from "lucide-react";
 import searchImg from "../assets/search.png";
-// import hbImg from "../assets/Elli.PNG";
 import Editt from "../assets/edit.png";
 import { FaEllipsisV, FaArrowLeft } from "react-icons/fa";
 
@@ -63,6 +62,8 @@ const Chat = () => {
   const [selectedChat, setSelectedChat] = useState(1); // Default to Muhammad Ali
   const [isMobile, setIsMobile] = useState(false);
   const [showChatList, setShowChatList] = useState(true);
+  const messagesEndRef = useRef(null);
+  const chatContainerRef = useRef(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -77,6 +78,15 @@ const Chat = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  useEffect(() => {
+    // Scroll to bottom when chat changes or component mounts
+    scrollToBottom();
+  }, [selectedChat, showChatList]);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   const handleChatSelect = (index) => {
     setSelectedChat(index);
     if (isMobile) {
@@ -89,7 +99,10 @@ const Chat = () => {
   };
 
   const renderChatList = () => (
-    <div className={`${isMobile ? 'w-full' : 'w-full md:w-1/3'} border-r overflow-y-auto`}>
+    <div 
+      className={`${isMobile ? 'w-full h-[calc(100vh-140px)]' : 'w-full md:w-1/3 h-full'} border-r overflow-y-auto`}
+      style={{ scrollBehavior: 'smooth' }}
+    >
       {messages
         .filter((msg) =>
           msg.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -123,9 +136,9 @@ const Chat = () => {
     const msg = messages[selectedChat];
     
     return (
-      <div className={`${isMobile ? 'w-full' : 'flex-1'} flex flex-col bg-gray-50 h-full`}>
-        {/* Chat Header */}
-        <div className="flex items-center gap-3 p-3 md:p-4 border-b bg-white shadow-sm">
+      <div className={`${isMobile ? 'w-full h-[calc(100vh-140px)]' : 'flex-1 h-full'} flex flex-col bg-gray-50`}>
+        {/* Chat Header - Fixed on mobile */}
+        <div className="sticky top-0 z-10 flex items-center gap-3 p-3 md:p-4 border-b bg-white shadow-sm">
           {isMobile && (
             <button 
               onClick={handleBackToChatList}
@@ -147,7 +160,11 @@ const Chat = () => {
         </div>
 
         {/* Scrollable Messages Area */}
-        <div className="flex-1 overflow-y-auto p-3 md:p-4 space-y-3 md:space-y-4">
+        <div 
+          className="flex-1 overflow-y-auto p-3 md:p-4 space-y-3 md:space-y-4"
+          style={{ scrollBehavior: 'smooth' }}
+          ref={chatContainerRef}
+        >
           <div className="bg-gray-200 text-sm px-3 py-2 rounded-xl max-w-[80%] md:max-w-[60%]">
             Hi Wajahat! Hope you're doing well.
           </div>
@@ -170,6 +187,9 @@ const Chat = () => {
           <div className="bg-gray-200 text-sm px-3 py-2 rounded-xl max-w-[80%] md:max-w-[60%]">
             Yes exactly, that's what I wanted to discuss with you.
           </div>
+          
+          {/* Empty div for auto-scroll to bottom */}
+          <div ref={messagesEndRef} />
         </div>
 
         {/* Fixed Message Input at Bottom */}
@@ -190,9 +210,9 @@ const Chat = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-white">
-      {/* Top Section: Messages and Search */}
-      <div className="flex items-center justify-between p-3 border-b shadow-sm bg-white">
+    <div className="flex flex-col h-screen bg-white" ref={chatContainerRef}>
+      {/* Top Section: Messages and Search - Fixed on mobile */}
+      <div className="sticky top-0 z-20 flex items-center justify-between p-3 border-b shadow-sm bg-white">
         {/* Messages Text */}
         <div className="text-lg md:text-xl font-medium">Chat</div>
 
