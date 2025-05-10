@@ -100,7 +100,7 @@ const OtpVerification = () => {
           <h2 className="text-xl md:text-2xl font-bold mb-2">Verify Your Account</h2>
           <p className="text-sm md:text-base text-gray-600 mb-6">
             Please enter 6 digits OTP you received on your registered phone{" "}
-            <span className="text-blue-600 font-semibold">+91325******41</span>
+            <span className="text-blue-600 font-semibold">+92325******41</span>
           </p>
 
           <label className="text-sm md:text-base mb-1 block font-medium">Enter OTP</label>
