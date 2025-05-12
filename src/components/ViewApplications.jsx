@@ -86,7 +86,7 @@ export default function ViewApplications({ applications, onClose, castingCall })
           </div>
           <div
             className={`flex items-center gap-2 ${
-              activeTab === "rejected" ? "text-black font-semibold" : "text-gray-400"
+              activeTab === "rejected" ? "text-black" : "text-gray-400"
             }`}
             onClick={() => setActiveTab("rejected")}
           >
@@ -99,7 +99,7 @@ export default function ViewApplications({ applications, onClose, castingCall })
           </div>
           <div
             className={`flex items-center gap-2 ${
-              activeTab === "wishlist" ? "text-black font-semibold" : "text-gray-400"
+              activeTab === "wishlist" ? "text-black" : "text-gray-400"
             }`}
             onClick={() => setActiveTab("wishlist")}
           >
