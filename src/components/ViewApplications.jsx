@@ -81,6 +81,14 @@ export default function ViewApplications({ applications, onClose, castingCall })
               src={receivedIcon}
               alt="Received"
               className="w-5 h-5"
+               style={
+                activeTab === "received"
+                  ? {
+                      filter:
+                        "invert(42%) sepia(93%) saturate(1352%) hue-rotate(176deg) brightness(96%) contrast(3801%)",
+                    }
+                  : {}
+              }
             />
             Received
           </div>
@@ -94,6 +102,14 @@ export default function ViewApplications({ applications, onClose, castingCall })
               src={rejectedIcon}
               alt="Rejected"
               className="w-5 h-5"
+               style={
+                activeTab === "rejected"
+                  ? {
+                      filter:
+                        "invert(42%) sepia(93%) saturate(1352%) hue-rotate(176deg) brightness(96%) contrast(3801%)",
+                    }
+                  : {}
+              }
             />
             Rejected
           </div>
@@ -107,6 +123,14 @@ export default function ViewApplications({ applications, onClose, castingCall })
               src={wishlistIcon}
               alt="Wishlist"
               className="w-5 h-5"
+               style={
+                activeTab === "wishlist"
+                  ? {
+                      filter:
+                        "invert(42%) sepia(93%) saturate(1352%) hue-rotate(176deg) brightness(96%) contrast(3801%)",
+                    }
+                  : {}
+              }
             />
             Wishlist
           </div>
