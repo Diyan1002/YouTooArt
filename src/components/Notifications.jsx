@@ -49,13 +49,13 @@ const Notifications = () => {
   }));
 
   return (
-    <aside className="w-80 bg-white p-4 shadow-lg h-[calc(105vh-2rem)] flex flex-col">
+    <aside className="w-80 max-w-full sm:w-80 sm:max-w-xs bg-white p-2 sm:p-4 shadow-lg h-[calc(100vh-2rem)] flex flex-col min-w-0">
       {/* Notifications Section */}
       <div className="mb-6 flex-1 overflow-hidden flex flex-col">
-        <h2 className="font-semibold sticky top-0 bg-white py-2 z-10">
+        <h2 className="font-semibold sticky top-0 bg-white py-2 z-10 text-base sm:text-lg">
           Notifications
         </h2>
-        <div className={`text-sm mt-2 space-y-2 flex-1 ${showAllNotifications ? 'overflow-y-auto scrollbar-hide pr-2' : 'overflow-hidden'}`}>
+        <div className={`text-xs sm:text-sm mt-2 space-y-2 flex-1 ${showAllNotifications ? 'overflow-y-auto scrollbar-hide pr-2' : 'overflow-hidden'}`}>
           {(showAllNotifications ? notifications : notifications.slice(0, 3)).map((notification) => (
             <div key={notification.id} className="flex items-start gap-3">
               <img 
@@ -75,7 +75,7 @@ const Notifications = () => {
         {notifications.length > 3 && (
           <button style={{ fontFamily: "Inter, sans-serif", fontWeight: 600 }} 
             onClick={() => setShowAllNotifications(!showAllNotifications)}
-            className="mt-2 w-full rounded-md px-4 py-2 text-sm bg-gray-100 text-[#399AF3] transition-colors sticky bottom-0"
+            className="mt-2 w-full rounded-md px-4 py-2 text-xs sm:text-sm bg-gray-100 text-[#399AF3] transition-colors sticky bottom-0"
           >
             {showAllNotifications ? "Show Less" : "Show All"}
           </button>
@@ -84,8 +84,8 @@ const Notifications = () => {
 
       {/* Connection Requests Section */}
       <div className="flex-1 overflow-hidden flex flex-col">
-        <h2 className="font-semibold sticky top-0 bg-white py-2 z-10">Connection Requests</h2>
-        <div className={`text-sm mt-2 space-y-4 flex-1 ${showAllConnections ? 'overflow-y-auto scrollbar-hide pr-2' : 'overflow-hidden'}`}>
+        <h2 className="font-semibold sticky top-0 bg-white py-2 z-10 text-base sm:text-lg">Connection Requests</h2>
+        <div className={`text-xs sm:text-sm mt-2 space-y-4 flex-1 ${showAllConnections ? 'overflow-y-auto scrollbar-hide pr-2' : 'overflow-hidden'}`}>
           {(showAllConnections ? connections : connections.slice(0, 3)).map((connection) => (
             <div key={connection.id} className="flex flex-col gap-2">
               <div className="flex items-start gap-3">
@@ -100,11 +100,11 @@ const Notifications = () => {
                 </div>
               </div>
               <div className="flex gap-2 pl-12 -mt-1">
-                <button className="flex items-center gap-1 bg-green-200  text-green-700 rounded-2xl px-2 py-1 text-xs transition-colors">
+                <button className="flex items-center gap-1 bg-green-200 text-green-700 rounded-2xl px-2 py-1 text-xs transition-colors">
                   <img src={AcceptIcon} alt="Accept" className="w-5 h-5" />
                   Accept
                 </button>
-                <button className="flex items-center gap-1 bg-pink-200  text-red-500 rounded-2xl px-2 py-1 text-xs transition-colors">
+                <button className="flex items-center gap-1 bg-pink-200 text-red-500 rounded-2xl px-2 py-1 text-xs transition-colors">
                   <img src={RejectIcon} alt="Reject" className="w-5 h-5" />
                   Reject
                 </button>
@@ -115,7 +115,7 @@ const Notifications = () => {
         {connections.length > 3 && (
           <button style={{ fontFamily: "Inter, sans-serif", fontWeight: 600 }}
             onClick={() => setShowAllConnections(!showAllConnections)}
-            className="mt-2 w-full rounded-md px-4 py-2 text-sm bg-gray-100 text-[#399AF3]  transition-colors sticky bottom-0"
+            className="mt-2 w-full rounded-md px-4 py-2 text-xs sm:text-sm bg-gray-100 text-[#399AF3] transition-colors sticky bottom-0"
           >
             {showAllConnections ? "Show Less" : "Show All"}
           </button>

@@ -1,5 +1,5 @@
 import React from "react";
-import loginImage from "../assets/banner.png"; // Replace with actual image
+import loginImage from "../assets/banner1.png"; // Replace with actual image
 import logo from "../assets/logo.png";         // Replace with actual logo
 import { useNavigate } from "react-router-dom"; // ✅ Import this
 
